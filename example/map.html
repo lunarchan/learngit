@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaflet map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="dist/leaflet.css" />
+    <script type="text/javascript" src="dist/leaflet.js"></script>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        div#container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>
+<script>
+    var mapUrl = 'http://localhost:3001/47626774/{z}/{x}/{y}';
+    var tileLayer = new L.TileLayer(mapUrl, {
+        minZoom: 1,
+        maxZoom: 10,
+        attribution: '卫星地图'
+    });
+
+    var center = new L.LatLng(38.8225909761771, 105.380859375);
+
+    map = new L.Map('container', {
+        center: center,
+        zoom: 4,
+        zoomControl: false,
+        attributionControl: false,
+        layers: [tileLayer]
+    });
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+</script>
